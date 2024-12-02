@@ -1,59 +1,17 @@
-package main
+package day01
 
 import (
 	"bufio"
-	"os"
 	"sort"
 	"strconv"
 	"strings"
+
+	"github.com/mathhater/advent-of-code/utils"
 )
 
-func abs(a int) int {
-	if a < 0 {
-		return -a
-	}
-	return a
-}
-
-func openFile(fileName string) *os.File {
-	inputFile, err := os.Open(fileName)
-	if err != nil {
-		panic(err)
-	}
-	return inputFile
-}
-
-func createFile(fileName string) *os.File {
-	outputFile, err := os.Create(fileName)
-	if err != nil {
-		panic(err)
-	}
-	return outputFile
-}
-
-func readLine(reader *bufio.Reader) (string, error) {
-	line, err := reader.ReadString('\n')
-	return strings.Replace(line, "\r\n", "", -1), err
-}
-
-func writeLine(writer *bufio.Writer, str string) {
-	_, err := writer.WriteString(str + "\n")
-	if err != nil {
-		panic(err)
-	}
-}
-
-func getInt(str string) int {
-	res, err := strconv.ParseInt(str, 10, 64)
-	if err != nil {
-		panic(err)
-	}
-	return int(res)
-}
-
-func main() {
-	inputFile := openFile("day1.in")
-	outputFile := createFile("day_1.out")
+func Day01() {
+	inputFile := utils.OpenFile("2024/day01/day1.in")
+	outputFile := utils.CreateFile("2024/day01/day1.out")
 	defer inputFile.Close()
 	defer outputFile.Close()
 	reader := bufio.NewReader(inputFile)
@@ -61,17 +19,17 @@ func main() {
 
 	var A, B []int
 	for {
-		line, err := readLine(reader)
-		if err.Error() == "EOF" {
-			break
-		}
+		line, err := utils.ReadLine(reader)
 		if err != nil {
+			if err.Error() == "EOF" {
+				break
+			}
 			panic(err)
 		}
 
 		splittedLine := strings.Split(line, "   ")
-		a := getInt(splittedLine[0])
-		b := getInt(splittedLine[1])
+		a := utils.ParseInt(splittedLine[0])
+		b := utils.ParseInt(splittedLine[1])
 		A = append(A, int(a))
 		B = append(B, int(b))
 	}
@@ -81,9 +39,9 @@ func main() {
 	// part 1
 	res := 0
 	for i := 0; i < len(A); i++ {
-		res += abs(B[i] - A[i])
+		res += utils.Abs(B[i] - A[i])
 	}
-	writeLine(writer, strconv.Itoa(res))
+	utils.WriteLine(writer, strconv.Itoa(res))
 
 	// part 2
 	res2 := 0
@@ -94,6 +52,6 @@ func main() {
 	for i := 0; i < len(A); i++ {
 		res2 += A[i] * cnt[A[i]]
 	}
-	writeLine(writer, strconv.Itoa(res2))
+	utils.WriteLine(writer, strconv.Itoa(res2))
 	writer.Flush()
 }
