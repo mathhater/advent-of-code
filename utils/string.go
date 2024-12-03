@@ -1,6 +1,9 @@
 package utils
 
-import "strconv"
+import (
+	"regexp"
+	"strconv"
+)
 
 func ParseInt(str string) int {
 	res, err := strconv.ParseInt(str, 10, 64)
@@ -8,4 +11,12 @@ func ParseInt(str string) int {
 		panic(err)
 	}
 	return int(res)
+}
+
+func GetRegex(str string) *regexp.Regexp {
+	regex, err := regexp.Compile(str)
+	if err != nil {
+		panic(err)
+	}
+	return regex
 }
