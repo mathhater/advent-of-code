@@ -11,6 +11,7 @@ import (
 	"github.com/mathhater/advent-of-code/2024/day08"
 	"github.com/mathhater/advent-of-code/2024/day09"
 	"github.com/mathhater/advent-of-code/2024/day10"
+	"github.com/mathhater/advent-of-code/2024/day11"
 )
 
 func main() {
@@ -24,4 +25,5 @@ func main() {
 	day08.Day08()
 	day09.Day09()
 	day10.Day10()
+	day11.Day11()
 }
