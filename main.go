@@ -13,6 +13,7 @@ import (
 	"github.com/mathhater/advent-of-code/2024/day10"
 	"github.com/mathhater/advent-of-code/2024/day11"
 	"github.com/mathhater/advent-of-code/2024/day12"
+	"github.com/mathhater/advent-of-code/2024/day13"
 )
 
 func main() {
@@ -28,4 +29,5 @@ func main() {
 	day10.Day10()
 	day11.Day11()
 	day12.Day12()
+	day13.Day13()
 }
