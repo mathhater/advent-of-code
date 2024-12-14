@@ -14,6 +14,7 @@ import (
 	"github.com/mathhater/advent-of-code/2024/day11"
 	"github.com/mathhater/advent-of-code/2024/day12"
 	"github.com/mathhater/advent-of-code/2024/day13"
+	"github.com/mathhater/advent-of-code/2024/day14"
 )
 
 func main() {
@@ -30,4 +31,5 @@ func main() {
 	day11.Day11()
 	day12.Day12()
 	day13.Day13()
+	day14.Day14()
 }
